@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的星座屋</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./myajax.js"></script>
+    <script src="./jquery/3/jquery-3.4.1.js"></script>
+    <style>
+        body{
+            background-image:url(./img/1.jpg);
+            background-attachment: fixed;
+            background-clip: border-box;
+            background-color: #666666;
+            background-origin: padding-box;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #head{
+            width:80%;
+            margin-left:10%;
+        }
+        #xz{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            overflow: hidden;
+            background-size: auto 40px;
+            line-height: 40px;
+            background: #F2549E;
+            height: 40px;
+            background: url(./img/menu_bg.gif);
+            display:flex;
+            justify-content:space-around;
+        }
+        #xz li{
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            overflow: hidden;
+            cursor:pointer;
+        }
+        #xz-1{
+            background: url(./img/care_bg.jpg);
+            height: 156px;
+            color: #fff;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        #dt{
+            float:left;
+            display:inline-block;
+            width: 130px;
+            height: 130px;
+            padding:30px 20px;
+        }
+        #dt img{
+            display:block;
+            margin-bottom:10px;
+        }
+        #dd{
+            float:left;
+           display:inline-block;
+        }
+        #dd-ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            height:100px;
+            margin-top:10%;
+        }
+        #dd-ul li{
+            float: left;
+            padding: 0 20px;
+            margin:0 20px;
+            line-height: 28px;
+            background: #77b9e3;
+            margin-right: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .body{
+            width:80%;
+            margin-left:10%;
+        }
+        .body h1{
+            width:100%;
+            font-size: 16px;
+            height: 30px;
+            line-height: 30px;
+            overflow: hidden;
+            padding: 5px 0;
+            color: #e44880;
+            background-position: 0 -32px;
+            border-bottom: solid 1px #eee;
+            
+        }
+        .rq{
+            background: #94caf1;
+            color: #fff;
+            display: inline-block;
+            padding: 0 8px;
+            height: 22px;
+            font-size: 14px;
+            margin-left: 10px;
+            border-radius: 5px;
+            line-height: 22px;
+            font-weight: 100;
+        }
+        h3{
+            display:inline-block;
+        }
+        .zhuti p{
+            line-height: 160%;
+            color: gray;
+            font-size: 13px;
+        }
+        .zhuti div{
+            display:none;
+        }
+        .xzz{
+            float:right;
+            display:inline-block;
+            background: #ee8eb0;
+            width: 90px;
+            padding: 0 5px 0 10px;
+            line-height: 26px;
+            color:#fff;
+        }
+        .zhuti{
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div id='head'>
+    <ul id='xz'>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div id='xz-1'>
+        <dl>
+            <dt id='dt'>
+                <img src=''>
+                <em></em>
+            </dt>
+            <dd id='dd'>
+                <ul id='dd-ul'>
+                    <li title='今日运势' rq='today'>今日运势</li>
+                    <li title='明日运势' rq='tomorrow'>明日运势</li>
+                    <li title='本周运势' rq='week'>本周运势</li>
+                    <li title='本月运势' rq='month'>本月运势</li>
+                    <li title='本年运势' rq='year'>本年运势</li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class='body'>
+    <h1>
+        十二星座<span class='xzys'>今日运势</span>
+        <span class='rq'></span>
+        <span class='xzz'></span>
+    </h1>
+    <div class='zhuti'>
+        <!-- 今日||明日 -->
+        <div class='today tomorrow'>
+            <p>
+                <h3>日期</h3>:<span class='date'></span>
+            </p>
+            <p>
+                <h3>概述</h3>:<span class='presummary'></span>
+            </p>
+            <p>
+                <h3>贵人星座</h3>:<span class='star'></span>
+            </p>
+            <p>
+                <h3>幸运颜色</h3>:<span class='color'></span>
+            </p>
+            <p>
+                <h3>幸运数字</h3>:<span class='number'></span>
+            </p>
+            <p>
+                <h3>综合运势</h3>:<span class='summary'></span>
+            </p>
+            <p>
+                <h3>财运运势</h3>:<span class='money'></span>
+            </p>
+            <p>
+                <h3>工作运势</h3>:<span class='career'></span>
+            </p>
+            <p>
+                <h3>爱情运势</h3>:<span class='love'></span>
+            </p>
+            <p>
+                <h3>健康运势</h3>:<span class='health'></span>
+            </p>
+        </div>
+        <!-- 本周-->
+        <div class='week'>
+            <p>
+                <h3>日期</h3>:<span class='date'></span>
+            </p>
+
+            <p>
+                <h3>财运运势</h3>:<span class='money'></span>
+            </p>
+            <p>
+                <h3>工作运势</h3>:<span class='career'></span>
+            </p>
+            <p>
+                <h3>>爱情运势</h3>:<span class='love'></span>
+            </p>
+            <p>
+                <h3>>健康运势</h3>:<span class='health'></span>
+            </p>
+        </div>
+        <!-- //本月 本年-->
+        <div class='month year'>
+            <p>
+                <h3>日期</h3>:<span class='date'></span>
+            </p>
+            <p>
+                <h3>综合运势</h3>:<span class='summary'></span>
+            </p>
+            <p>
+                <h3>财运运势</h3>:<span class='money'></span>
+            </p>
+            <p>
+                <h3>工作运势</h3>:<span class='career'></span>
+            </p>
+            <p>
+                <h3>>爱情运势</h3>:<span class='love'></span>
+            </p>
+        </div>
+    </div>
+</div>
+
+    <script>
+    //创建数组用来保存图片地址
+    var imgarr = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg','12.jpg'];
+
+
+        //获得当前时间
+        var data = new Date();
+        //年份
+        var n = data.getFullYear();
+        //月份
+        var y = data.getUTCMonth()+1 > 10?data.getUTCMonth()+1:"0"+(data.getUTCMonth()+1);
+        //日
+        var r = data.getDate() > 10?data.getDate():"0"+data.getDate();
+        //组合在一起当前时间
+        var da = n+"-"+y+'-'+r;
+
+        //把今天日期写到页面中
+        $('.rq').text(n+"年"+y+"月"+r+"日");
+
+        //展示星座的图片和ID,日期
+        _.jsonp("https://api.jisuapi.com/astro/all", {
+            appkey: "f085e56441f42f2a"
+        },"h122", function (data, error) {
+            // console.log(data);   
+            
+            $('#xz li').each(function (index,domEle){  
+                //把星座名字拿出来
+                $(domEle).text(data.result[index].astroname);
+               //把星座日期提示出来 和 每个星座id记下来
+                $(domEle).attr({ title: data.result[index].date, name: data.result[index].astroid});
+                
+            });
+        });
+
+        //默认使用白羊座照片和日期
+        Constellation(1);
+        //事件:点击相应的星座出现相应的照片和日期
+        $("#xz li").click(function () {
+            Constellation($(this).attr("name"));
+            
+            information({astroid:parseInt($(this).attr("name"))},{data:da},"今日运势");
+                //排他
+                $('.zhuti div').each(function(i,c){
+                    $(c).css({display:"none"})
+                }); 
+
+            // console.log(ys);
+            var dys=document.getElementsByClassName('today');
+            //更改对应的class名
+           $(dys).css({display:"block"});
+            //更改标题
+            $('.xzys').text("今日运势");
+        })
+
+        
+        //事件:点击相对应星座题目出现相对应的答案
+        $("#dd-ul li").click(function () {
+            information({astroid:parseInt($(this).attr("name"))},{data:da},$(this).attr("title"));
+            
+            //排他
+               $('.zhuti div').each(function(i,c){
+                $(c).css({display:"none"})
+                }); 
+             //拿到点击相对应的运势
+             var ys = $(this).attr("rq");
+            // console.log(ys);
+            var dys=document.getElementsByClassName(ys);
+            //更改对应的class名
+           $(dys).css({display:"block"});
+            //更改标题
+            $('.xzys').text($(this).attr("title"));
+        });
+
+        //函数:用来相对应星座相关信息
+        function information(i,d,title) {
+            _.jsonp("https://api.jisuapi.com/astro/fortune", {
+            appkey: "f085e56441f42f2a",
+            d,
+            astroid:i.astroid
+        },"h124", function (data, error) {   
+            //  console.log(data.result.year);
+        if("今日运势" == title){
+            $('.date').text(data.result.today.date);
+             $('.presummary').text(data.result.today.presummary);
+             $('.star').text(data.result.today.star);
+             $('.color').text(data.result.today.color);
+             $('.number').text(data.result.today.number);
+             $('.summary').text(data.result.today.summary);
+             $('.money').text(data.result.today.money);
+             $('.career').text(data.result.today.career);
+             $('.love').text(data.result.today.love);
+             $('.health').text(data.result.today.health);
+             $('.number').text(data.result.today.number);
+        }else if("明日运势" == title){
+            $('.date').text(data.result.tomorrow.date);
+            $('.presummary').text(data.result.tomorrow.presummary);
+             $('.star').text(data.result.tomorrow.star);
+             $('.color').text(data.result.tomorrow.color);
+             $('.number').text(data.result.tomorrow.number);
+             $('.summary').text(data.result.tomorrow.summary);
+             $('.money').text(data.result.tomorrow.money);
+             $('.career').text(data.result.tomorrow.career);
+             $('.love').text(data.result.tomorrow.love);
+             $('.health').text(data.result.tomorrow.health);
+             $('.number').text(data.result.tomorrow.number);
+        }else if("本周运势" == title){
+            $('.date').text(data.result.week.date);
+             $('.money').text(data.result.week.money);
+             $('.career').text(data.result.week.career);
+             $('.love').text(data.result.week.love);
+             $('.health').text(data.result.week.health);
+        }else if("本月运势" == title){
+             $('.date').text(data.result.month.date);
+             $('.summary').text(data.result.month.summary);
+             $('.money').text(data.result.month.money);
+             $('.career').text(data.result.month.career);
+             $('.love').text(data.result.month.love);
+        }else if("本年运势" == title){
+            $('.date').text(data.result.year.date);
+             $('.summary').text(data.result.year.summary);
+             $('.money').text(data.result.year.money);
+             $('.career').text(data.result.year.career);
+             $('.love').text(data.result.year.love);
+             }
+
+            });
+        };
+
+        //函数:用来拿相对应的照片和日期
+        function Constellation(i) {
+         _.jsonp("https://api.jisuapi.com/astro/all", {
+            appkey: "f085e56441f42f2a"
+        },"h123", function (data, error) {   
+            //相对应的星座照片   
+            $('#dt img').attr({ src:data.result[i-1].pic});
+            //相对应的星座日期
+            $('#dt em').text(data.result[i-1].date);
+            //把星座日期提示出来 和 每个星座id记下来
+            $('#dd-ul li').attr({  name: i});
+            //显示当前星座
+            $('.xzz').text(data.result[i-1].astroname);
+            //当页面显示是随机出现背景图片
+    $('body').css({"background-image":"url(./img/"+imgarr[i-1]+")"});
+            });
+        };
+    </script>
+    
+</body>
+
+</html>
